@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = 'force-dynamic';
 import { useUser } from "@/app/contexts/UserContext";
 import api from "@/app/lib/axios";
 import { SetMeal, TrendingUpRounded } from "@mui/icons-material";
