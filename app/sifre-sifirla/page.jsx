@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
+export const dynamic = 'force-dynamic';
+
 
 export default function ResetPasswordPage() {
   const searchParams = useSearchParams();
@@ -14,6 +16,7 @@ export default function ResetPasswordPage() {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  
 
   const formik = useFormik({
     initialValues: {

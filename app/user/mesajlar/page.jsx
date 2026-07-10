@@ -7,6 +7,8 @@ import ConversationList from "@/app/component/user/ConversationList";
 import MessagePanel from "@/app/component/user/MessagePanel";
 import { useUser } from "@/app/contexts/UserContext";
 import { socket } from "@/app/lib/socket";
+export const dynamic = 'force-dynamic';
+
 
 export default function page() {
   const searchParams = useSearchParams();

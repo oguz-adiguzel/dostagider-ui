@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
 import Confetti from "react-confetti";
+export const dynamic = 'force-dynamic';
 
 const page = () => {
   const searchParams = useSearchParams();

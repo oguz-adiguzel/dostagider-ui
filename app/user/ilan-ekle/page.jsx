@@ -25,6 +25,7 @@ import { IoIosBatteryFull } from "react-icons/io";
 import { PiEngineBold } from "react-icons/pi";
 import { Tooltip } from "@mui/material";
 import { IoInformationCircleOutline } from "react-icons/io5";
+export const dynamic = 'force-dynamic';
 
 const page = () => {
   const [loading, setLoading] = useState(true);
