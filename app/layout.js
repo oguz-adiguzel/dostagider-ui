@@ -7,6 +7,7 @@ import MobileHeader from "./component/MobileHeader";
 import { useParams, usePathname, useSearchParams } from "next/navigation";
 import { UserProvider } from "./contexts/UserContext";
 import { MessageProvider } from "./contexts/MessageContext";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       
+       <Suspense fallback={<div className="flex justify-center items-center h-screen">Yükleniyor...</div>}>
         <UserProvider>
         {isUserPage === false && (
           <div className="hidden lg:block">
@@ -52,7 +53,7 @@ export default function RootLayout({ children }) {
 
         {isUserPage === false && <Footer />}
         </UserProvider>
-       
+       </Suspense>
       </body>
     </html>
   );
