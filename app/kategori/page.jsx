@@ -29,6 +29,7 @@ import Stack from "@mui/material/Stack";
 
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+export const dynamic = 'force-dynamic';
 
 const ITEM_HEIGHT = 86;
 const ITEM_PADDING_TOP = 8;
