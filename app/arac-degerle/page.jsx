@@ -30,7 +30,7 @@ const page = () => {
   const getCarCategories = async () => {
     try {
       const res = await axios.get(
-        " https://dostagider-api.onrender.com/car-options/categories"
+        " https://dostagider-api.vercel.app/car-options/categories"
       );
       setCarCategories(res.data.data);
       setLoading(false);
@@ -43,13 +43,13 @@ const page = () => {
     try {
       if (selectCategory && !selectBrand) {
         const res = await axios.get(
-          `https://dostagider-api.onrender.com/car-options/filter?category=${selectCategory}`
+          `https://dostagider-api.vercel.app/car-options/filter?category=${selectCategory}`
         );
         setCarBrandList(res.data.data[0]);
       }
       if (selectCategory && selectBrand && !selectModel) {
         const res = await axios.get(
-          `https://dostagider-api.onrender.com/car-options/filter?category=${selectCategory}&brand=${selectBrand}`
+          `https://dostagider-api.vercel.app/car-options/filter?category=${selectCategory}&brand=${selectBrand}`
         );
         setCarModelList(res.data.data[0].brands[0].models);
       }
@@ -144,7 +144,7 @@ const page = () => {
   const estimateCar = async () => {
     try {
       const response = await axios.get(
-        ` https://dostagider-api.onrender.com/ilan/arac-degerle?category=${
+        ` https://dostagider-api.vercel.app/ilan/arac-degerle?category=${
           formData.category
         }&brand=${formData.brand}&model=${formData.model}${
           formData.variant1 ? `&variant1=${formData.variant1}` : ""

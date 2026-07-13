@@ -124,7 +124,7 @@ const page = () => {
   const getData = async () => {
     try {
       const res = await axios.get(
-        ` https://dostagider-api.onrender.com/ilan/detay?ilanNo=${params.slug[0]}`,
+        ` https://dostagider-api.vercel.app/ilan/detay?ilanNo=${params.slug[0]}`,
       );
 
       setData(res.data.ilan);
@@ -262,7 +262,7 @@ const page = () => {
         return;
       } else {
         const res = await api.get(
-          ` https://dostagider-api.onrender.com/users/status/${data._id}`,
+          ` https://dostagider-api.vercel.app/users/status/${data._id}`,
         );
         setIsFav(res.data.favorited);
       }

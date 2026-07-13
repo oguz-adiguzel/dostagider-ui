@@ -45,7 +45,7 @@ const page = () => {
     onSubmit: async (values) => {
       try {
         const res = await axios.post(
-          " https://dostagider-api.onrender.com/users/register-corporate",
+          " https://dostagider-api.vercel.app/users/register-corporate",
           {
             ...values,
             telefon: values.telefon.replace(/\s/g, ""),

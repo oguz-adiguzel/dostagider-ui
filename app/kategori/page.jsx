@@ -309,7 +309,7 @@ const page = () => {
   const getCarCategories = async () => {
     try {
       const res = await axios.get(
-        " https://dostagider-api.onrender.com/car-options/categories",
+        " https://dostagider-api.vercel.app/car-options/categories",
       );
       setCarCategories(res.data.data);
       setLoading(false);
@@ -322,7 +322,7 @@ const page = () => {
     try {
       if (searchParams.get("category") && !searchParams.get("brand")) {
         const res = await axios.get(
-          ` https://dostagider-api.onrender.com/car-options/listing-page-filter?category=${searchParams.get(
+          ` https://dostagider-api.vercel.app/car-options/listing-page-filter?category=${searchParams.get(
             "category",
           )}`,
         );
@@ -334,7 +334,7 @@ const page = () => {
         !searchParams.get("model")
       ) {
         const res = await axios.get(
-          ` https://dostagider-api.onrender.com/car-options/listing-page-filter?category=${searchParams.get(
+          ` https://dostagider-api.vercel.app/car-options/listing-page-filter?category=${searchParams.get(
             "category",
           )}&brand=${searchParams.get("brand")}`,
         );
@@ -347,7 +347,7 @@ const page = () => {
         searchParams.get("model")
       ) {
         const res = await axios.get(
-          ` https://dostagider-api.onrender.com/car-options/listing-page-filter?category=${searchParams.get(
+          ` https://dostagider-api.vercel.app/car-options/listing-page-filter?category=${searchParams.get(
             "category",
           )}&brand=${searchParams.get("brand")}`,
         );

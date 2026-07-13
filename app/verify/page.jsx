@@ -24,7 +24,7 @@ const page = () => {
       }
 
       try {
-        const response = await axios.post(" https://dostagider-api.onrender.com/users/verify", {
+        const response = await axios.post(" https://dostagider-api.vercel.app/users/verify", {
           email,
           code,
         });
