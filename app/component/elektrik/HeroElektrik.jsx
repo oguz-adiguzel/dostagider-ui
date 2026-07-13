@@ -60,7 +60,7 @@ const HeroElektrik = () => {
   const getCarCategories = async () => {
     try {
       const res = await axios.get(
-        " https://dostagider-api.vercel.app/ev-car-options/categories",
+        " https://dostagider-api.onrender.com/ev-car-options/categories",
       );
       setCarCategories(res.data.data);
       setLoading(false);
@@ -73,13 +73,13 @@ const HeroElektrik = () => {
     try {
       if (selectCategory && !selectBrand) {
         const res = await axios.get(
-          ` https://dostagider-api.vercel.app/ev-car-options/filter?category=${selectCategory}`,
+          ` https://dostagider-api.onrender.com/ev-car-options/filter?category=${selectCategory}`,
         );
         setCarBrandList(res.data.data[0]);
       }
       if (selectCategory && selectBrand && !selectModel) {
         const res = await axios.get(
-          ` https://dostagider-api.vercel.app/ev-car-options/filter?category=${selectCategory}&brand=${selectBrand}`,
+          ` https://dostagider-api.onrender.com/ev-car-options/filter?category=${selectCategory}&brand=${selectBrand}`,
         );
         setCarModelList(res.data.data[0].brands[0].models);
       }

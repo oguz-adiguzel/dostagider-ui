@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const api = axios.create({
-  baseURL: " https://dostagider-api.vercel.app/",
+  baseURL: " https://dostagider-api.onrender.com/",
   withCredentials: true,
 });
 
@@ -31,7 +31,7 @@ api.interceptors.response.use(
 
       try {
         const res = await axios.post(
-          " https://dostagider-api.vercel.app/users/refresh",
+          " https://dostagider-api.onrender.com/users/refresh",
           {},
           { withCredentials: true }
         );

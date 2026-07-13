@@ -44,7 +44,7 @@ export default function ForgotPasswordPage() {
         setMessage("");
 
         const res = await axios.post(
-          " https://dostagider-api.vercel.app/users/forgot-password",
+          " https://dostagider-api.onrender.com/users/forgot-password",
           values,
         );
 

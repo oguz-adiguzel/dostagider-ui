@@ -93,8 +93,8 @@ const page = () => {
     try {
       const res = await axios.get(
         evCars
-          ? " https://dostagider-api.vercel.app/ev-car-options/categories"
-          : " https://dostagider-api.vercel.app/car-options/categories",
+          ? " https://dostagider-api.onrender.com/ev-car-options/categories"
+          : " https://dostagider-api.onrender.com/car-options/categories",
       );
       setCarCategories(res.data.data);
       setLoading(false);
@@ -108,16 +108,16 @@ const page = () => {
       if (selectCategory && !selectBrand) {
         const res = await axios.get(
           evCars
-            ? ` https://dostagider-api.vercel.app/ev-car-options/filter?category=${selectCategory}&includeTechnical=true`
-            : ` https://dostagider-api.vercel.app/car-options/filter?category=${selectCategory}`,
+            ? ` https://dostagider-api.onrender.com/ev-car-options/filter?category=${selectCategory}&includeTechnical=true`
+            : ` https://dostagider-api.onrender.com/car-options/filter?category=${selectCategory}`,
         );
         setCarBrandList(res.data.data[0]);
       }
       if (selectCategory && selectBrand && !selectModel) {
         const res = await axios.get(
           evCars
-            ? ` https://dostagider-api.vercel.app/ev-car-options/filter?category=${selectCategory}&brand=${selectBrand}&includeTechnical=true`
-            : ` https://dostagider-api.vercel.app/car-options/filter?category=${selectCategory}&brand=${selectBrand}`,
+            ? ` https://dostagider-api.onrender.com/ev-car-options/filter?category=${selectCategory}&brand=${selectBrand}&includeTechnical=true`
+            : ` https://dostagider-api.onrender.com/car-options/filter?category=${selectCategory}&brand=${selectBrand}`,
         );
         setCarModelList(res.data.data[0].brands[0].models);
       }

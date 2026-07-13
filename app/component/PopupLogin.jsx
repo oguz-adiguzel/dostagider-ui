@@ -12,7 +12,7 @@ const PopupLogin = ({ action, onResult }) => {
 const router = useRouter()
   const handleLogin = async () => {
     try {
-      const res = await axios.post(" https://dostagider-api.vercel.app/users/login", {
+      const res = await axios.post(" https://dostagider-api.onrender.com/users/login", {
         email,
         sifre: password,
       });

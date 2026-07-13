@@ -73,7 +73,7 @@ const Register = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const res = await axios.post(" https://dostagider-api.vercel.app/users/register", {
+        const res = await axios.post(" https://dostagider-api.onrender.com/users/register", {
           email: values.email,
           sifre: values.password,
           isim: values.name,

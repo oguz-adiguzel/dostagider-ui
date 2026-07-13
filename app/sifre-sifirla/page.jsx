@@ -32,7 +32,7 @@ export default function ResetPasswordPage() {
         setMessage("");
 
         const res = await axios.post(
-          " https://dostagider-api.vercel.app/users/reset-password",
+          " https://dostagider-api.onrender.com/users/reset-password",
           {
             email,
             token,
