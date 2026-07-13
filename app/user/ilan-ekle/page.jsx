@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import ReactQuill from "react-quill-new";
+// import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import Cookies from "js-cookie";
 import api from "@/app/lib/axios";
@@ -25,7 +25,12 @@ import { IoIosBatteryFull } from "react-icons/io";
 import { PiEngineBold } from "react-icons/pi";
 import { Tooltip } from "@mui/material";
 import { IoInformationCircleOutline } from "react-icons/io5";
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
+
+import dynamic from 'next/dynamic';
+
+// Sunucu tarafında render edilmelerini (SSR) kapatıyoruz:
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 const page = () => {
   const [loading, setLoading] = useState(true);
