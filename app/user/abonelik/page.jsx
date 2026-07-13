@@ -10,11 +10,16 @@ import { ToastContainer, toast } from "react-toastify";
 import Confetti from "react-confetti";
 import axios from "axios";
 
-import Cards from "react-credit-cards-2";
+// import Cards from "react-credit-cards-2";
 
 // import 'react-credit-cards/es/styles-compiled.css';
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { useUser } from "@/app/contexts/UserContext";
+
+import dynamic from 'next/dynamic';
+
+// Sunucu tarafında render edilmelerini (SSR) kapatıyoruz:
+const Cards = dynamic(() => import('react-credit-cards-2'), { ssr: false });
 
 const page = () => {
   const [loading, setLoading] = useState();
@@ -29,10 +34,6 @@ const page = () => {
   const handleBack = () => setStep(step - 1);
 
   const { user,fetchUser } = useUser();
-
-  console.log("====================================");
-  console.log("user", user);
-  console.log("====================================");
 
   const [pack, setPack] = useState([
     {

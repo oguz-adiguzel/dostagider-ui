@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ReactQuill from "react-quill-new";
+// import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 
 import { DndContext, closestCenter } from "@dnd-kit/core";
@@ -21,6 +21,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { useUser } from "@/app/contexts/UserContext";
 import { FaCheck, FaUser } from "react-icons/fa";
+
+import dynamic from 'next/dynamic';
+
+// Sunucu tarafında render edilmelerini (SSR) kapatıyoruz:
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 const page = () => {
   const params = useParams();
