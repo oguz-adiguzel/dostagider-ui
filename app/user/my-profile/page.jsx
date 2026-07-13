@@ -1,5 +1,5 @@
 "use client";
-export const dynamic = 'force-dynamic';
+// export const dynamic = 'force-dynamic';
 import { useUser } from "@/app/contexts/UserContext";
 import api from "@/app/lib/axios";
 import { SetMeal, TrendingUpRounded } from "@mui/icons-material";
@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import ReactQuill from "react-quill-new";
+// import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -18,7 +18,13 @@ import { FaListAlt, FaRegCreditCard } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { motion, AnimatePresence } from "framer-motion";
 
-import Cards from "react-credit-cards-2";
+// import Cards from "react-credit-cards-2";
+
+import dynamic from 'next/dynamic';
+
+// Sunucu tarafında render edilmelerini (SSR) kapatıyoruz:
+const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+const Cards = dynamic(() => import('react-credit-cards-2'), { ssr: false });
 
 // import 'react-credit-cards/es/styles-compiled.css';
 import "react-credit-cards-2/dist/es/styles-compiled.css";
