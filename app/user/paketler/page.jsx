@@ -5,7 +5,7 @@ const page = () => {
     <>
     <p className="mt-20 text-center text-4xl font-semibold">Dostagider.com Avantajlı Paketler</p>
     <p className="text-center text-gray-400">Paketini seç aracını daha hızlı sat</p>
-    <div className="w-3/4 py-5 mx-auto grid grid-cols-3 gap-x-16">
+    <div className="w-full lg:w-3/4 py-5 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-x-16 px-5 lg:px-0">
       <div className="py-20">
         <div className="w-full py-24 bg-gradient-to-b from-orange-400 to-orange-300 flex flex-col justify-center items-center rounded-2xl relative overflow-hidden">
           <p className="absolute text-orange-200 text-9xl bottom-0 left-3">

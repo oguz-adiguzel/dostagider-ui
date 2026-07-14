@@ -126,7 +126,7 @@ useEffect(() => {
   }
 
   return (
-    <div className="flex-1 flex flex-col bg-gray-50">
+    <div className="lg:flex-1 flex flex-col bg-gray-50">
       {/* 🔷 HEADER */}
       <div className="border-b bg-white px-6 py-4 flex items-center gap-4">
         {/* SOL GÖRSEL */}

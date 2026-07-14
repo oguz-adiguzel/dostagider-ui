@@ -16,7 +16,7 @@ export default function ConversationList({
   }, [conversations]);
 
   return (
-    <div className="w-80 border-r flex flex-col bg-gray-50">
+    <div className="w-full lg:w-80 border-r flex flex-col bg-gray-50">
       {/* HEADER */}
       <div className="p-5 border-b font-bold text-lg text-gray-800 bg-white">
         Sohbetler

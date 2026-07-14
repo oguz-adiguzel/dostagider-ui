@@ -129,7 +129,7 @@ const page = () => {
     );
 
   return (
-    <div className="w-full p-10">
+    <div className="w-full p-5 lg:p-10">
       <ToastContainer />
       <div className="flex items-center justify-between">
         <div>
@@ -151,7 +151,7 @@ const page = () => {
           Ekip Üyesi Ekle
         </button>
       </div>
-      <div className="w-1/3 p-5 border border-gray-300 rounded-2xl shadow-sm shadow-orange-500 mt-10 ">
+      <div className="w-full lg:w-1/3 p-5 border border-gray-300 rounded-2xl shadow-sm shadow-orange-500 mt-10 ">
         <div className="flex items-start space-x-3">
           <div className="w-28 h-28 border border-gray-200 rounded-2xl">
             <img className="w-full h-full object-contain" src={user?.logoUrl} />
@@ -172,7 +172,7 @@ const page = () => {
       <p className="mt-12 text-xl font-semibold text-orange-400">
         Kayıtlı Ekip Üyeleriniz
       </p>
-      <div className="grid grid-cols-3 gap-8 mt-12">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
         {teamList?.map((item, index) => (
           <div key={index} className="px-5 py-2 border border-gray-400 ">
             <div className="flex items-center justify-between">

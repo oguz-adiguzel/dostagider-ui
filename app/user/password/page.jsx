@@ -2,9 +2,9 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="w-full h-full py-10 px-14 font-sans overflow-y-scroll">
+    <div className="w-full h-full py-10 px-5 lg:px-14 font-sans overflow-y-scroll">
       <h2 className="text-3xl font-semibold">Şifre Değiştir</h2>
-      <div className="w-1/2 py-10 border border-gray-300 rounded-2xl mt-10 px-8">
+      <div className="w-full lg:w-1/2 py-10 border border-gray-300 rounded-2xl mt-10 px-8">
         <div className="w-full py-2 border border-gray-300 rounded-2xl px-3">
           <p className="text-xs text-gray-400">Eski Şifre</p>
           <input

@@ -127,26 +127,22 @@ const page = () => {
       </div>
     );
 
-  console.log("====================================");
-  console.log("fav list", favList);
-  console.log("====================================");
-
   return (
-    <div className="w-full h-full py-10 px-14 font-sans overflow-y-scroll">
+    <div className="w-full h-full py-10 px-5 lg:px-14 font-sans overflow-y-scroll">
       <ToastContainer />
       <h2 className="text-3xl font-semibold">Favori İlanlarım</h2>
       <p className="mb-5 text-base text-orange-400">
         <span className="font-bold text-orange-500">{favList?.count}</span> İlan
         Listeleniyor
       </p>
-      <div className="w-full mt-10 border border-gray-300 rounded-2xl py-10 grid grid-cols-1 gap-5 px-56">
+      <div className="w-full mt-10 border border-gray-300 rounded-2xl py-10 grid grid-cols-1 gap-5 lg:px-56">
         {favList?.favoriler.map((item, index) => {
           const priceInfo = getFavoritePriceDrop(item);
 
           console.log("price info", priceInfo);
 
           return (
-            <div className="border border-gray-300 rounded-2xl hover:shadow-2xl duration-200 px-5 pt-8 pb-4 grid grid-cols-5 gap-x-6 pr-20 relative group">
+            <div className="border border-gray-300 rounded-2xl hover:shadow-2xl duration-200 px-5 pt-8 pb-4 grid grid-cols-1 lg:grid-cols-5 gap-x-6 lg:pr-20 relative group">
               <div onClick={()=>removeFav(item.ilan._id)} className="text-sm absolute top-2 right-2 flex items-center cursor-pointer space-x-1 opacity-0 group-hover:opacity-100 duration-200">
                 <MdFavorite color="red" />
                 <p className="text-gray-400">Favorilerimden Çıkar</p>
@@ -170,7 +166,7 @@ const page = () => {
                 <p>Favoriye Ekleme Tarihi</p>
                 <p>{formattedDate(item.addedAt)}</p>
               </div>
-              <div className=" col-span-1 flex flex-col items-center justify-center text-lg font-semibold">
+              <div className=" col-span-1 flex flex-col items-center lg:justify-center text-lg font-semibold">
                 {/* <div className="flex items-center space-x-0.5">
                   <GiBackwardTime size={20} />
                   <p className="text-red-500 text-sm">

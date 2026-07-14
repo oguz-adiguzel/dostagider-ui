@@ -7,8 +7,7 @@ import ConversationList from "@/app/component/user/ConversationList";
 import MessagePanel from "@/app/component/user/MessagePanel";
 import { useUser } from "@/app/contexts/UserContext";
 import { socket } from "@/app/lib/socket";
-export const dynamic = 'force-dynamic';
-
+export const dynamic = "force-dynamic";
 
 export default function page() {
   const searchParams = useSearchParams();
@@ -17,107 +16,107 @@ export default function page() {
   const [conversations, setConversations] = useState([]);
   const [selectedId, setSelectedId] = useState(initialConversationId);
 
-   const { user } = useUser(); // user._id
-     
-    const currentUserId = user?._id;
+  const { user } = useUser(); // user._id
 
-    const selectedConversation = conversations.find(
-  c => c._id === selectedId
-);
-  
+  const currentUserId = user?._id;
+
+  const selectedConversation = conversations.find((c) => c._id === selectedId);
 
   useEffect(() => {
-    api.get("/conversations").then(res => {
+    api.get("/conversations").then((res) => {
       setConversations(res.data);
     });
   }, []);
 
-//   useEffect(() => {
-//   if (!currentUserId) return;
+  //   useEffect(() => {
+  //   if (!currentUserId) return;
 
-//   socket.connect();
-//   socket.emit("join", currentUserId);
+  //   socket.connect();
+  //   socket.emit("join", currentUserId);
 
-//   socket.on("conversationUpdated", updatedConversation => {
-//     setConversations(prev => {
-//       const exists = prev.find(c => c._id === updatedConversation._id);
+  //   socket.on("conversationUpdated", updatedConversation => {
+  //     setConversations(prev => {
+  //       const exists = prev.find(c => c._id === updatedConversation._id);
 
-//       let newList;
+  //       let newList;
 
-//       if (exists) {
-//         // 🔁 Var olanı güncelle
-//         newList = prev.map(c =>
-//           c._id === updatedConversation._id ? updatedConversation : c
-//         );
-//       } else {
-//         // ➕ Yeni conversation
-//         newList = [updatedConversation, ...prev];
-//       }
+  //       if (exists) {
+  //         // 🔁 Var olanı güncelle
+  //         newList = prev.map(c =>
+  //           c._id === updatedConversation._id ? updatedConversation : c
+  //         );
+  //       } else {
+  //         // ➕ Yeni conversation
+  //         newList = [updatedConversation, ...prev];
+  //       }
 
-//       // 🔝 updatedAt'e göre sırala
-//       return newList.sort(
-//         (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-//       );
-//     });
-//   });
+  //       // 🔝 updatedAt'e göre sırala
+  //       return newList.sort(
+  //         (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
+  //       );
+  //     });
+  //   });
 
-//   return () => {
-//     socket.off("conversationUpdated");
-//     socket.disconnect();
-//   };
-// }, [currentUserId]);
+  //   return () => {
+  //     socket.off("conversationUpdated");
+  //     socket.disconnect();
+  //   };
+  // }, [currentUserId]);
 
-useEffect(() => {
-  if (!currentUserId) return;
+  useEffect(() => {
+    if (!currentUserId) return;
 
-  socket.connect();
-  socket.emit("join", currentUserId);
+    socket.connect();
+    socket.emit("join", currentUserId);
 
-  const handleConversationUpdated = (updatedConversation) => {
-    setConversations(prev => {
-      const exists = prev.find(c => c._id === updatedConversation._id);
+    const handleConversationUpdated = (updatedConversation) => {
+      setConversations((prev) => {
+        const exists = prev.find((c) => c._id === updatedConversation._id);
 
-      let newList;
+        let newList;
 
-      if (exists) {
-        newList = prev.map(c =>
-          c._id === updatedConversation._id
-            ? {
-                ...c,
-                ...updatedConversation,
-              }
-            : c
+        if (exists) {
+          newList = prev.map((c) =>
+            c._id === updatedConversation._id
+              ? {
+                  ...c,
+                  ...updatedConversation,
+                }
+              : c,
+          );
+        } else {
+          newList = [updatedConversation, ...prev];
+        }
+
+        return newList.sort(
+          (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt),
         );
-      } else {
-        newList = [updatedConversation, ...prev];
-      }
+      });
+    };
 
-      return newList.sort(
-        (a, b) => new Date(b.updatedAt) - new Date(a.updatedAt)
-      );
-    });
-  };
+    socket.on("conversationUpdated", handleConversationUpdated);
 
-  socket.on("conversationUpdated", handleConversationUpdated);
-
-  return () => {
-    socket.off("conversationUpdated", handleConversationUpdated);
-    // ❌ socket.disconnect YOK
-  };
-}, [currentUserId]);
+    return () => {
+      socket.off("conversationUpdated", handleConversationUpdated);
+      // ❌ socket.disconnect YOK
+    };
+  }, [currentUserId]);
 
   return (
-     <div className="h-[calc(100vh-64px)] bg-gray-100 p-4">
-    <div className="flex h-full bg-white rounded-xl shadow overflow-hidden">
-      <ConversationList
-        conversations={conversations}
-        selectedId={selectedId}
-        currentUserId={currentUserId}
-        onSelect={setSelectedId}
-      />
+    <div className="h-[calc(100vh-64px)] bg-gray-100 p-4">
+      <div className="flex lg:flex-row flex-col h-full bg-white rounded-xl shadow overflow-hidden">
+        <ConversationList
+          conversations={conversations}
+          selectedId={selectedId}
+          currentUserId={currentUserId}
+          onSelect={setSelectedId}
+        />
 
-      <MessagePanel conversationId={selectedId} conversation={selectedConversation} />
+        <MessagePanel
+          conversationId={selectedId}
+          conversation={selectedConversation}
+        />
+      </div>
     </div>
-  </div>
   );
 }
