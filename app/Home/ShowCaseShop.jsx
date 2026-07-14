@@ -28,7 +28,7 @@ const ShowCaseShop = () => {
   const getData = async () => {
     try {
       const response = await axios.get(
-        " https://dostagider-api.onrender.com/galleryFeatured/featured/active",
+        " https://dostagider-api.vercel.app/galleryFeatured/featured/active",
       );
       setData(response.data.galleries);
       setLoading(false);
