@@ -59,19 +59,50 @@ export default function MessagePanel({ conversation }) {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  useEffect(() => {
+useEffect(() => {
+    if (!currentUserId || !conversationId) return;
+
+    // 1. Soketi her ihtimale karşı canlı tut ve odaya kesin olarak katıl
+    socket.connect();
+    socket.emit("join", currentUserId);
+    console.log("🔌 Socket join talebi gönderildi:", currentUserId);
+
+    // 2. Yeni mesaj dinleyicisi
     const handleNewMessage = (message) => {
+      console.log("✉️ Socket'ten yeni mesaj yakalandı:", message);
       if (message.conversationId === conversationId) {
-        setMessages((prev) => [...prev, message]);
+        // Eğer mesaj zaten bizde yoksa ekle (mükerrerliği önlemek için ID kontrolü yapabiliriz)
+        setMessages((prev) => {
+          const exists = prev.some((m) => m._id === message._id);
+          if (exists) return prev;
+          return [...prev, message];
+        });
       }
     };
 
     socket.on("newMessage", handleNewMessage);
 
+    // 3. Temizlik
     return () => {
       socket.off("newMessage", handleNewMessage);
     };
-  }, [conversationId]);
+  }, [conversationId, currentUserId]);
+
+
+
+  // useEffect(() => {
+  //   const handleNewMessage = (message) => {
+  //     if (message.conversationId === conversationId) {
+  //       setMessages((prev) => [...prev, message]);
+  //     }
+  //   };
+
+  //   socket.on("newMessage", handleNewMessage);
+
+  //   return () => {
+  //     socket.off("newMessage", handleNewMessage);
+  //   };
+  // }, [conversationId]);
 
   // 📤 Mesaj gönder
   const sendMessage = async () => {
