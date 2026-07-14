@@ -262,7 +262,7 @@ const page = () => {
         return;
       } else {
         const res = await api.get(
-          ` https://dostagider-api.vercel.app/users/status/${data._id}`,
+          `/users/status/${data._id}`,
         );
         setIsFav(res.data.favorited);
       }
