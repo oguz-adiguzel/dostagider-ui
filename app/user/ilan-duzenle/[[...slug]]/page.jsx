@@ -274,12 +274,12 @@ const page = () => {
   }
 
   return (
-    <div className="w-full h-full py-5 px-14 font-sans overflow-y-scroll relative">
+    <div className="w-full h-full py-5 px-5 lg:px-14 font-sans overflow-y-scroll relative">
       <ToastContainer />
       <h2 className="text-2xl font-semibold">İlan Düzenle</h2>
       <div className="w-full py-5 border border-gray-300 mt-10 rounded-2xl px-6 font-sans">
         <p className="font-semibold">İlan Genel Bakış</p>
-        <div className="w-full grid grid-cols-4 gap-5 mt-5 text-sm">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-4 gap-5 mt-5 text-sm">
           <div>
             <p className="font-semibold">İlan Başlığı</p>
             <input
@@ -421,7 +421,7 @@ const page = () => {
           <p className="text-sm text-gray-400">
             Seçilen üyenin iletişim bilgileri ilanda belirtilir
           </p>
-          <div className="grid grid-cols-3 gap-8 mt-3">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-3">
             {teamList?.map((item, index) => (
               <div key={index} className="px-5 py-2 border border-gray-400 ">
                 <div className="flex items-center justify-between">
